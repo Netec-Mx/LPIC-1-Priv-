@@ -1,3 +1,5 @@
+
+
 # Administración de sistemas Linux a nivel profesional
 
 Este curso proporciona los conocimientos y habilidades necesarios para administrar sistemas Linux en entornos empresariales y preparar a los participantes para la obtención de la certificación LPIC-1 del Linux Professional Institute (LPI). A lo largo del curso, los participantes aprenderán a instalar, configurar, mantener y solucionar problemas en sistemas Linux mediante el uso de herramientas de línea de comandos, administración de usuarios, redes, almacenamiento, servicios esenciales y prácticas de seguridad. El contenido se encuentra alineado con los objetivos oficiales de los exámenes LPIC-101 y LPIC-102, combinando fundamentos teóricos con Practica 1s prácticos orientados a escenarios reales de administración de sistemas.
