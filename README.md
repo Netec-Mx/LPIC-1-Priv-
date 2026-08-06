@@ -1,4 +1,4 @@
-
+<img src="images/neteclogo (2).png" alt="logo" width="300"/>
 
 # Administración de sistemas Linux a nivel profesional
 
@@ -82,8 +82,13 @@ Este curso proporciona los conocimientos y habilidades necesarios para administr
   - Descripción: Actividad práctica del capítulo Seguridad en Linux: Implementar controles de acceso, cifrado y endurecimiento del sistema para reducir la superficie de ataque y proteger los recursos críticos del servidor.
   - Duración estimada: 73 min
 
-## Flujo de colaboración
 
-- Trabajar en `changes_course`.
-- Crear Pull Request hacia `main`.
-- Merge por `Squash and merge`.
+  ---
+
+## 📬 **Contacto y más información**
+
+Si tienes alguna pregunta o necesitas más detalles, no dudes en [contactarnos](mailto:soporte@netec.com). También puedes encontrar más recursos en nuestra [página](https://netec.com).
+
+---
+
+¡Gracias por visitar nuestra plataforma! No olvides revisar todos los laboratorios y comenzar tu viaje de aprendizaje hoy mismo.
