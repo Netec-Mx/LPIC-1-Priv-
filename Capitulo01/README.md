@@ -7,7 +7,7 @@
 | **Duración** | 58 minutos |
 | **Complejidad** | Fácil |
 | **Nivel Bloom** | Aplicar |
-| **Servidor objetivo** | srv-linux-01 (Ubuntu Server 22.04.4 LTS el nombre del host puede ser diferente) |
+| **Servidor objetivo** | srv-linux-01 (Ubuntu Server 22.04.4 LTS - el nombre del host puede ser diferente -) |
 | **IP** | 192.168.100.10 (la IP puede ser diferente) |
 
 ## Descripción General
@@ -67,6 +67,8 @@ Conéctate al servidor usando los datos que te de tu instructor e instala las he
 
 ```bash
 ssh sysadmin@192.168.100.10 (los datos de conexión pueden ser diferentes)
+o
+Usa el cliente de RDP con los datos que te proporcione tu instructor.
 ```
 
 ```bash
@@ -93,8 +95,8 @@ sudo chown root:root /opt/sysreport
 1. Ejecuta el comando `lscpu` para obtener información completa del procesador:
 
 ```bash
-1. Cambiate al usuario `root` con el siguiente comando: sudo bash
-2. Ejecuta los siguientes comandos que se te indiquen.
+1.1 Cambiate al usuario `root` con el siguiente comando: sudo bash
+1.2 Ejecuta los siguientes comandos que se te indican.
 
 lscpu
 ```
@@ -280,24 +282,35 @@ lsblk | grep -q "sda" && echo "✓ Disco principal detectado" || echo "✗ No se
 
 ```bash
 lspci
+
+o si estas en una VM de Azure
+
+Listar dispositivos del bus virtual de Hyper-V (VMBus)
+ls -l /sys/bus/vmbus/devices/
+lsmod | grep hv_
+
 ```
 
 2. Obtén información detallada de un dispositivo específico (controladora de red):
 
 ```bash
 lspci -v | grep -A10 "Ethernet"
+o en Azure
+ls -l /sys/class/net/
 ```
 
-3. Lista los dispositivos USB conectados:
+3. Lista los dispositivos USB conectados (en Azure no hay dispositivos USB reales):
 
 ```bash
 lsusb
+# Este último comando en Azure no mostrará nada.
 ```
 
 4. Examina la jerarquía de dispositivos USB con detalle:
 
 ```bash
 lsusb -t
+# Este último comando en Azure no mostrará nada.
 ```
 
 5. Guarda la información de buses:
@@ -405,21 +418,25 @@ lsmod | tail -n +2 | wc -l
 
 ```bash
 lsmod | grep -i e1000
+o usa el siguiente comando si estas en Azure
+ethtool -i eth0
 ```
 
 4. Obtén información detallada del módulo de red:
 
 ```bash
 modinfo e1000
+o en Azure
+ls -la /sys/module/hv_netvsc/parameters/
 ```
 
-5. Examina las dependencias del módulo:
+5. Examina las dependencias del módulo (si no estas en Azure):
 
 ```bash
 modinfo e1000 | grep -E '(depends|description|filename|author)'
 ```
 
-6. Revisa los módulos de almacenamiento cargados:
+6. Revisa los módulos de almacenamiento cargados (si no estas en Azure):
 
 ```bash
 lsmod | grep -iE '(ahci|ata|scsi|sd_mod)'
@@ -497,7 +514,14 @@ ls /sys/class/net/
 
 ```bash
 cat /sys/class/net/enp0s3/address
+o
+En Azure:
+cat /sys/class/net/eth0/address
+
 cat /sys/class/net/enp0s3/operstate
+o
+En Azure:
+cat /sys/class/net/eth0/operstate
 ```
 
 7. Explora la información del dispositivo de bloque:
@@ -649,7 +673,7 @@ ip -s link show
 5. Verifica conectividad con el gateway:
 
 ```bash
-ping -c 3 192.168.100.1
+ping -c 3 192.168.100.1 (usar la IP asignada en la interface principal)
 ```
 
 6. Guarda la información de red:
@@ -685,7 +709,7 @@ ip addr show | grep -q "192.168.100.10" && echo "✓ IP configurada correctament
 
 ---
 
-### Paso 10: Generación del Reporte de Diagnóstico Consolidado
+### Paso 10: Generación del Reporte de Diagnóstico Consolidado (modificar los comandos necesarios para un ambiente virtual en Azure)
 
 **Objetivo:** Compilar toda la información recopilada en un reporte único y estructurado que sirva como línea base del entorno.
 
