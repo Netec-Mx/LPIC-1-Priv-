@@ -1,4 +1,4 @@
-# Restaurar la operación de un servidor Linux que presenta fallas de arranque
+# Restaurar la operación de un servidor Linux que presenta fallas de arranque (Este laboratorio no es realizable en Azure, solo podra hacerse en ambientes de hardware real o virtualizacion local de Linux usando Virtualbox o VMWare Workstation).
 
 ## 1. Metadatos
 
