@@ -7,8 +7,8 @@
 | **Duración** | 58 minutos |
 | **Complejidad** | Fácil |
 | **Nivel Bloom** | Aplicar |
-| **Servidor objetivo** | srv-linux-01 (Ubuntu Server 22.04.4 LTS) |
-| **IP** | 192.168.100.10 |
+| **Servidor objetivo** | srv-linux-01 (Ubuntu Server 22.04.4 LTS el nombre del host puede ser diferente) |
+| **IP** | 192.168.100.10 (la IP puede ser diferente) |
 
 ## Descripción General
 
@@ -44,8 +44,8 @@ En este laboratorio realizarás un inventario exhaustivo del hardware, los módu
 | CPU | 4 vCPUs (x86_64) |
 | RAM | 4 GB mínimo |
 | Disco sistema | `/dev/sda` — 40 GB |
-| Red Adaptador 1 | Red interna `syslab-network` (192.168.100.10/24) |
-| Red Adaptador 2 | NAT (acceso a internet) |
+| Red Adaptador 1 | Red interna `syslab-network` (192.168.100.10/24) - Las IP´s configuradas pueden ser diferentes - |
+| Red Adaptador 2 | NAT (acceso a internet) - Las IP´s configuradas pueden ser diferentes -|
 
 ### Software Requerido
 
@@ -63,10 +63,10 @@ En este laboratorio realizarás un inventario exhaustivo del hardware, los módu
 
 ### Preparación Inicial del Entorno
 
-Conéctate al servidor e instala las herramientas necesarias:
+Conéctate al servidor usando los datos que te de tu instructor e instala las herramientas necesarias:
 
 ```bash
-ssh sysadmin@192.168.100.10
+ssh sysadmin@192.168.100.10 (los datos de conexión pueden ser diferentes)
 ```
 
 ```bash
@@ -77,7 +77,7 @@ Crea el directorio estándar para reportes:
 
 ```bash
 sudo mkdir -p /opt/sysreport
-sudo chown sysadmin:sysadmin /opt/sysreport
+sudo chown root:root /opt/sysreport
 ```
 
 ---
@@ -93,6 +93,9 @@ sudo chown sysadmin:sysadmin /opt/sysreport
 1. Ejecuta el comando `lscpu` para obtener información completa del procesador:
 
 ```bash
+1. Cambiate al usuario `root` con el siguiente comando: sudo bash
+2. Ejecuta los siguientes comandos que se te indiquen.
+
 lscpu
 ```
 
