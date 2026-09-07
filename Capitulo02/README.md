@@ -13,6 +13,7 @@
 ## 2. Descripción General
 
 En este laboratorio simularás tres escenarios de falla de arranque en un servidor Linux de producción y los resolverás aplicando técnicas profesionales de recuperación. Trabajarás con modificaciones incorrectas en GRUB2, recuperación de contraseña de root mediante `rd.break`, y reinstalación completa del gestor de arranque desde un entorno de rescate. Cada escenario representa una situación real que un administrador de sistemas enfrenta en entornos empresariales.
+
 Nota importante:  Este laboratorio no es realizable en Azure, solo podra hacerse en ambientes de hardware real o virtualizacion local de Linux usando Virtualbox o VMWare Workstation.
 
 ## 3. Objetivos de Aprendizaje
