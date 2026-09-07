@@ -6,7 +6,7 @@ Este curso proporciona los conocimientos y habilidades necesarios para administr
 
 ## Estructura
 
-- `CapituloXX/README.md`: guía de laboratorio por capítulo.
+- `Capitulos/README.md`: guía de laboratorio por capítulo.
 
 ## Lista de laboratorios
 
