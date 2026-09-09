@@ -253,6 +253,7 @@ sudo fdisk -l /dev/sda
 ```
 
 **Salida Esperada:**
+
 Nota: El reporte podria ser diferente al aquí mostrado 
 ```
 NAME   SIZE TYPE FSTYPE MOUNTPOINT        MODEL
