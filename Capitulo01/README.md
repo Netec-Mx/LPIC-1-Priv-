@@ -253,7 +253,7 @@ sudo fdisk -l /dev/sda
 ```
 
 **Salida Esperada:**
-
+# El reporte podria ser diferente al aquí mostrado 
 ```
 NAME   SIZE TYPE FSTYPE MOUNTPOINT        MODEL
 sda     40G disk                          VBOX HARDDISK
