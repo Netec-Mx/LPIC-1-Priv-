@@ -53,7 +53,7 @@ Al completar este laboratorio serás capaz de:
 | RAM | 2048 MB |
 | Disco | /dev/sda 40 GB (sistema) |
 | Red | Adaptador 1: Red interna `syslab-network` / Adaptador 2: NAT |
-| ISO | Ubuntu Server 22.04.4 LTS (montada en unidad óptica virtual) |
+| ISO | Ubuntu Server 22.04.4 LTS o superior (montada en unidad óptica virtual) |
 
 ### Preparación inicial
 
@@ -82,7 +82,7 @@ Ahora inicia sesión en srv-linux-01 y prepara el directorio de documentación:
 ```bash
 # Iniciar sesión como sysadmin
 sudo mkdir -p /opt/sysreport
-sudo chown sysadmin:sysadmin /opt/sysreport
+sudo chown root:root /opt/sysreport
 ```
 
 Registra el estado actual del sistema como línea base:
@@ -111,7 +111,7 @@ echo "--- Fecha de referencia: $(date) ---" >> /opt/sysreport/boot_baseline.txt
 
 **Instrucciones:**
 
-1. Inicia sesión en srv-linux-01 como `sysadmin`:
+1. Inicia sesión en srv-linux-01 como `root`:
 
 ```bash
 ssh sysadmin@192.168.100.10
