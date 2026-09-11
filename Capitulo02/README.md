@@ -39,7 +39,7 @@ Al completar este laboratorio serás capaz de:
 ### Acceso requerido
 
 - VM srv-linux-01 operativa con Ubuntu Server 22.04.4 LTS o superior
-- Acceso a la consola de VirtualBox (no SSH — se trabajará sin red en varios escenarios)
+- Acceso a la consola de gráfica de Linux (no SSH — se trabajará sin red en varios escenarios)
 - Imagen ISO de Ubuntu Server 22.04.4 LTS o superior disponible para el modo rescate
 - Usuario `root` con contraseña `Raiz1234`
 
@@ -51,12 +51,12 @@ Al completar este laboratorio serás capaz de:
 |---------|---------------|
 | VM | srv-linux-01 |
 | CPU | 2 vCPU mínimo |
-| RAM | 2048 MB |
-| Disco | /dev/sda 40 GB (sistema) |
+| RAM | 2048 MB mínimo |
+| Disco | /dev/sda 40 GB mínimo (sistema) |
 | Red | Adaptador 1: Red interna `syslab-network` / Adaptador 2: NAT |
 | ISO | Ubuntu Server 22.04.4 LTS o superior o superior (montada en unidad óptica virtual) |
 
-### Preparación inicial (Solo en Virtualbox si se usa en los laboratorios)
+### Preparación inicial (OPCIONAL: Solo si se usa Virtualbox en los laboratorios)
 
 **CRÍTICO: Antes de iniciar cualquier escenario, crea un snapshot de la VM.**
 
@@ -98,7 +98,7 @@ echo "--- Fecha de referencia: $(date) ---" >> /opt/sysreport/boot_baseline.txt
 
 ---
 
-## 6. Procedimiento Paso a Paso
+## 6. Procedimiento Paso a Paso (Si estas usando una VM en Azure sigue los pasos que te indique tu instructor)
 
 ---
 
@@ -115,7 +115,10 @@ echo "--- Fecha de referencia: $(date) ---" >> /opt/sysreport/boot_baseline.txt
 1. Inicia sesión en srv-linux-01 como `root`:
 
 ```bash
-ssh root@192.168.10.100
+Accede linux desde la cuenta: sysadmin  password: Raiz1234
+Cambiate a root con `sudo bash` password: Raiz1234
+Abre una terminal desde el modo gráfico de Linux.
+
 # O accede directamente por consola de VirtualBox
 ```
 
@@ -193,7 +196,7 @@ Kernel panic - not syncing: No working init found.
 
 **Instrucciones:**
 
-1. Reinicia la VM (si está colgada, usa el menú de VirtualBox: Máquina → Reiniciar).
+1. Reinicia la VM (si está colgada, usa el menú de asministración con Máquina → Reiniciar).
 
 2. Durante el arranque, **mantén presionada la tecla `Shift`** (en sistemas BIOS) o **presiona `Esc`** repetidamente para acceder al menú de GRUB.
 
