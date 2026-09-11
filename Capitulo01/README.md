@@ -33,7 +33,7 @@ En este laboratorio realizarás un inventario exhaustivo del hardware, los módu
 
 - VM Windows Server con Acceso via RDP con el usuario: Netec  password: Pa55w.rd123!
 - Acceder el Hyper-V Manager y encender la VM srv-linux-01  
-- Con la VM `srv-linux-01` encendida y accesible vía SSH o consola gráfica directa acceder con usuario: sysadmin  password: Raiz1234
+- Con la VM `srv-linux-01` encendida y accesible vía SSH o consola gráfica directa, acceder linux con el usuario: sysadmin  password: Raiz1234
 - El usuario `sysadmin` debe tener el acceso `sudo` configurado.
 
 ## Entorno del Laboratorio
