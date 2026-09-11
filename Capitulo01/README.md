@@ -67,7 +67,9 @@ Conéctate al servidor usando los datos que te de tu instructor e instala las he
 
 ```bash
 ssh sysadmin@192.168.10.100 (los datos de conexión pueden ser diferentes)
+
 o
+
 Usa el cliente de RDP proporcionado con los datos que te indique tu instructor.
 
 usuario: Netec
