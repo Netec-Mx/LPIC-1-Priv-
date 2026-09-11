@@ -70,10 +70,10 @@ Al completar este laboratorio serás capaz de:
 ```bash
 Con el administrador de Hiper-V de Windows Server
 
-# Una VM con 8GB RAM, 3 discos duros de 50Gb (disco del SO), 20Gb y 20Gb
+# Una VM con 8GB RAM, 3 discos duros de 50Gb (disco del SO) y dos discos adicionles de 20Gb.
 
 ```
-### Comandos de preparación (en VirtualBox ejecutar en el anfitrión)
+### Comandos de preparación (solo en VirtualBox ejecutar en el anfitrión)
 
 ```bash
 # Crear la máquina virtual con el administrador de Virtualbox
