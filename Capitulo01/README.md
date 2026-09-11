@@ -292,6 +292,7 @@ lspci
 o si estas en una VM de Azure
 
 Listar dispositivos del bus virtual de Hyper-V (VMBus)
+
 ls -l /sys/bus/vmbus/devices/
 lsmod | grep hv_
 
@@ -301,7 +302,9 @@ lsmod | grep hv_
 
 ```bash
 lspci -v | grep -A10 "Ethernet"
+
 o en Azure
+
 ls -l /sys/class/net/
 ```
 
@@ -309,13 +312,15 @@ ls -l /sys/class/net/
 
 ```bash
 lsusb
-# Este último comando en Azure no mostrará nada.
+
+# Este último comando en Azure no mostrará nada debido a que no hay USBs virtualizados.
 ```
 
 4. Examina la jerarquía de dispositivos USB con detalle:
 
 ```bash
 lsusb -t
+
 # Este último comando en Azure no mostrará nada.
 ```
 
