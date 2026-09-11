@@ -41,7 +41,7 @@ Al completar este laboratorio serás capaz de:
 - VM srv-linux-01 operativa con Ubuntu Server 22.04.4 LTS o superior
 - Acceso a la consola de VirtualBox (no SSH — se trabajará sin red en varios escenarios)
 - Imagen ISO de Ubuntu Server 22.04.4 LTS o superior disponible para el modo rescate
-- Usuario `root` con contraseña `Linux@Admin2024!`
+- Usuario `root` con contraseña `Raiz1234`
 
 ## 5. Entorno del Laboratorio
 
@@ -367,7 +367,7 @@ Login incorrect
 
 ```
 srv-linux-01 login: root
-Password: Linux@Admin2024!
+Password: Raiz1234
 ```
 
 **Salida esperada:**
