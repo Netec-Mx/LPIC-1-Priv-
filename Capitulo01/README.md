@@ -437,7 +437,9 @@ ethtool -i eth0
 
 ```bash
 modinfo e1000
+
 o en Azure
+
 ls -la /sys/module/hv_netvsc/parameters/
 ```
 
@@ -720,7 +722,7 @@ ip addr show | grep -q "192.168.10.100" && echo "✓ IP configurada correctament
 
 ---
 
-### Paso 10: Generación del Reporte de Diagnóstico Consolidado (modificar los comandos necesarios para un ambiente virtual en Azure)
+### Paso 10 (OPCIONAL): Generación del Reporte de Diagnóstico Consolidado (modificar los comandos necesarios para un ambiente virtual en Azure)
 
 **Objetivo:** Compilar toda la información recopilada en un reporte único y estructurado que sirva como línea base del entorno.
 
