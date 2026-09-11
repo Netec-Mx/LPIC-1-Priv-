@@ -8,7 +8,7 @@
 | **Complejidad** | Alta |
 | **Nivel Bloom** | Aplicar |
 | **Máquina(s)** | srv-linux-01 (Ubuntu Server 22.04.4 LTS o superior) |
-| **IP** | 192.168.100.10 |
+| **IP** | 192.168.10.100 |
 | **Password de root en Azure** | Raiz1234 |
 
 ## 2. Descripción General
@@ -115,7 +115,7 @@ echo "--- Fecha de referencia: $(date) ---" >> /opt/sysreport/boot_baseline.txt
 1. Inicia sesión en srv-linux-01 como `root`:
 
 ```bash
-ssh root@192.168.100.10
+ssh root@192.168.10.100
 # O accede directamente por consola de VirtualBox
 ```
 
