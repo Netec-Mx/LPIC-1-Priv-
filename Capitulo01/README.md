@@ -7,8 +7,8 @@
 | **Duración** | 58 minutos |
 | **Complejidad** | Fácil |
 | **Nivel Bloom** | Aplicar |
-| **Servidor objetivo** | srv-linux-01 (Ubuntu Server 22.04.4 LTS - el nombre del host puede ser diferente -) |
-| **IP** | 192.168.100.10 (la IP puede ser diferente) |
+| **Servidor objetivo** | srv-linux-01 (Ubuntu Server 22.04.4 LTS o superior - el nombre del host puede ser diferente -) |
+| **IP** | 192.168.10.100 (la IP podria ser diferente) |
 
 ## Descripción General
 
@@ -33,7 +33,7 @@ En este laboratorio realizarás un inventario exhaustivo del hardware, los módu
 
 - VM `srv-linux-01` encendida y accesible vía SSH o consola directa.
 - Usuario `sysadmin` con acceso `sudo` configurado.
-- Contraseña: `Linux@Admin2024!`
+- Contraseña: `Raiz1234`
 
 ## Entorno del Laboratorio
 
@@ -43,8 +43,8 @@ En este laboratorio realizarás un inventario exhaustivo del hardware, los módu
 |---------|---------------|
 | CPU | 4 vCPUs (x86_64) |
 | RAM | 4 GB mínimo |
-| Disco sistema | `/dev/sda` — 40 GB |
-| Red Adaptador 1 | Red interna `syslab-network` (192.168.100.10/24) - Las IP´s configuradas pueden ser diferentes - |
+| Disco sistema | `/dev/sda` — 40 GB o superior |
+| Red Adaptador 1 | Red interna `syslab-network` (192.168.10.100/24) - Las IP´s configuradas pueden ser diferentes - |
 | Red Adaptador 2 | NAT (acceso a internet) - Las IP´s configuradas pueden ser diferentes -|
 
 ### Software Requerido
@@ -66,9 +66,12 @@ En este laboratorio realizarás un inventario exhaustivo del hardware, los módu
 Conéctate al servidor usando los datos que te de tu instructor e instala las herramientas necesarias:
 
 ```bash
-ssh sysadmin@192.168.100.10 (los datos de conexión pueden ser diferentes)
+ssh sysadmin@192.168.10.100 (los datos de conexión pueden ser diferentes)
 o
-Usa el cliente de RDP con los datos que te proporcione tu instructor.
+Usa el cliente de RDP proporcionado con los datos que te indique tu instructor.
+
+usuario: Netec
+password: Pa55w.rd123!
 ```
 
 ```bash
@@ -699,13 +702,13 @@ ping -c 3 192.168.100.1 (usar la IP asignada en la interface principal)
 
 ```
 2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 ...
-    inet 192.168.100.10/24 brd 192.168.100.255 scope global enp0s3
+    inet 192.168.10.100/24 brd 192.168.100.255 scope global enp0s3
 ```
 
 **Verificación:**
 
 ```bash
-ip addr show | grep -q "192.168.100.10" && echo "✓ IP configurada correctamente" || echo "✗ IP no encontrada"
+ip addr show | grep -q "192.168.10.100" && echo "✓ IP configurada correctamente" || echo "✗ IP no encontrada"
 ```
 
 ---
@@ -845,7 +848,7 @@ echo "Reporte guardado en: $REPORT_FILE"
 ```
 === RESUMEN EJECUTIVO ===
 Servidor: srv-linux-01
-IP: 192.168.100.10/24
+IP: 192.168.10.100/24
 CPU: Intel(R) Core(TM) ... (virtualizado)
 RAM Total: 3.8Gi
 Disco Principal: 40G
