@@ -10,7 +10,7 @@
 
 ## 2. Descripción General
 
-En este laboratorio implementarás el servidor **srv-linux-02** desde cero, partiendo de la creación de la máquina virtual en Azure hasta obtener un sistema Ubuntu Server 22.04.4 LTS completamente operativo con un esquema de particionado GPT empresarial. Diseñarás manualmente las particiones utilizando `gdisk`, crearás sistemas de archivos optimizados para cada carga de trabajo (ext4 para sistema, xfs para logs y aplicaciones, swap para memoria virtual), configurarás el montaje persistente mediante `/etc/fstab` con UUIDs, y practicarás la verificación y reparación de sistemas de archivos. El resultado será la base de almacenamiento sobre la que se construirán los laboratorios posteriores de LVM y administración avanzada.
+En este laboratorio implementarás el servidor **srv-linux-02** desde cero, partiendo de la creación de la máquina virtual en Azure hasta obtener un sistema Ubuntu Server 22.04.4 LTS o superior completamente operativo con un esquema de particionado GPT empresarial. Diseñarás manualmente las particiones utilizando `gdisk`, crearás sistemas de archivos optimizados para cada carga de trabajo (ext4 para sistema, xfs para logs y aplicaciones, swap para memoria virtual), configurarás el montaje persistente mediante `/etc/fstab` con UUIDs, y practicarás la verificación y reparación de sistemas de archivos. El resultado será la base de almacenamiento sobre la que se construirán los laboratorios posteriores de LVM y administración avanzada.
 
 ## 3. Objetivos de Aprendizaje
 
@@ -31,7 +31,7 @@ Al completar este laboratorio serás capaz de:
 
 ### Acceso y recursos necesarios
 - Acceso a HyperV Server Administration instalado y funcional en el equipo anfitrión.
-- ISO de Ubuntu Server 22.04.4 LTS descargada (`ubuntu-22.04.4-live-server-amd64.iso`).
+- ISO de Ubuntu Server 22.04.4 LTS o superior descargada (`ubuntu-22.04.4-live-server-amd64.iso`).
 - Al menos 70 GB de espacio libre en disco del anfitrión para los discos virtuales.
 - Acceso administrativo al equipo anfitrión para crear y configurar máquinas virtuales.
 - Red interna `syslab-network` ya creada en Azure (del Lab 01).
@@ -43,7 +43,7 @@ Al completar este laboratorio serás capaz de:
 | Componente | Configuración |
 |------------|---------------|
 | **Nombre VM** | srv-linux-02 |
-| **Sistema operativo** | Ubuntu Server 22.04.4 LTS (64-bit) |
+| **Sistema operativo** | Ubuntu Server 22.04.4 LTS o superior (64-bit) |
 | **RAM** | 4096 MB |
 | **CPUs** | 2 |
 | **Disco 1 (/dev/sda)** | 60 GB — VDI, dinámico — Sistema operativo |
@@ -106,7 +106,7 @@ VBoxManage modifyvm "srv-linux-02" --boot1 dvd --boot2 disk --boot3 none --boot4
 
 ### Paso 1: Instalar Ubuntu Server con particionado mínimo temporal
 
-**Objetivo:** Realizar la instalación base de Ubuntu Server 22.04.4 LTS utilizando el instalador interactivo con un esquema de particionado mínimo que luego reconfiguraremos manualmente.
+**Objetivo:** Realizar la instalación base de Ubuntu Server 22.04.4 LTS o superior utilizando el instalador interactivo con un esquema de particionado mínimo que luego reconfiguraremos manualmente.
 
 **Instrucciones:**
 
@@ -422,7 +422,7 @@ Salida esperada (los UUIDs variarán):
 
 ### Paso 4: Instalar Ubuntu Server en el esquema de particiones creado
 
-**Objetivo:** Completar la instalación de Ubuntu Server 22.04.4 LTS utilizando el esquema de particiones GPT empresarial recién creado.
+**Objetivo:** Completar la instalación de Ubuntu Server 22.04.4 LTS o superior utilizando el esquema de particiones GPT empresarial recién creado.
 
 **Instrucciones:**
 
