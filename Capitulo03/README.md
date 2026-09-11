@@ -10,7 +10,7 @@
 
 ## 2. Descripción General
 
-En este laboratorio implementarás el servidor **srv-linux-02** desde cero, partiendo de la creación de la máquina virtual en VirtualBox hasta obtener un sistema Ubuntu Server 22.04.4 LTS completamente operativo con un esquema de particionado GPT empresarial. Diseñarás manualmente las particiones utilizando `gdisk`, crearás sistemas de archivos optimizados para cada carga de trabajo (ext4 para sistema, xfs para logs y aplicaciones, swap para memoria virtual), configurarás el montaje persistente mediante `/etc/fstab` con UUIDs, y practicarás la verificación y reparación de sistemas de archivos. El resultado será la base de almacenamiento sobre la que se construirán los laboratorios posteriores de LVM y administración avanzada.
+En este laboratorio implementarás el servidor **srv-linux-02** desde cero, partiendo de la creación de la máquina virtual en Azure hasta obtener un sistema Ubuntu Server 22.04.4 LTS completamente operativo con un esquema de particionado GPT empresarial. Diseñarás manualmente las particiones utilizando `gdisk`, crearás sistemas de archivos optimizados para cada carga de trabajo (ext4 para sistema, xfs para logs y aplicaciones, swap para memoria virtual), configurarás el montaje persistente mediante `/etc/fstab` con UUIDs, y practicarás la verificación y reparación de sistemas de archivos. El resultado será la base de almacenamiento sobre la que se construirán los laboratorios posteriores de LVM y administración avanzada.
 
 ## 3. Objetivos de Aprendizaje
 
@@ -30,11 +30,11 @@ Al completar este laboratorio serás capaz de:
 - Entendimiento del proceso de planeación de instalaciones Linux (Lección 3.1).
 
 ### Acceso y recursos necesarios
-- Oracle VirtualBox 7.0.14 instalado y funcional en el equipo anfitrión.
+- Acceso a HyperV Server Administration instalado y funcional en el equipo anfitrión.
 - ISO de Ubuntu Server 22.04.4 LTS descargada (`ubuntu-22.04.4-live-server-amd64.iso`).
 - Al menos 70 GB de espacio libre en disco del anfitrión para los discos virtuales.
 - Acceso administrativo al equipo anfitrión para crear y configurar máquinas virtuales.
-- Red interna `syslab-network` ya creada en VirtualBox (del Lab 01).
+- Red interna `syslab-network` ya creada en Azure (del Lab 01).
 
 ## 5. Entorno del Laboratorio
 
@@ -69,7 +69,7 @@ Al completar este laboratorio serás capaz de:
 
 ```bash
 # Crear la máquina virtual
-VBoxManage createvm --name "srv-linux-02" --ostype "Ubuntu_64" --register
+Con el administrador de 
 
 # Configurar recursos
 VBoxManage modifyvm "srv-linux-02" --memory 4096 --cpus 2 --firmware efi
