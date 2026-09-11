@@ -354,11 +354,11 @@ sudo passwd -l root
 exit
 ```
 
-5. Intenta iniciar sesión como root con la contraseña documentada (`R00t@Linux2024!`):
+5. Intenta iniciar sesión como root con la contraseña documentada (`Raiz1234`):
 
 ```
 srv-linux-01 login: root
-Password: R00t@Linux2024!
+Password: Raiz1234
 ```
 
 **Salida esperada:**
@@ -459,7 +459,7 @@ mount -o remount,rw /
 passwd root
 ```
 
-Introduce la nueva contraseña: `R00t@Linux2024!`
+Introduce la nueva contraseña: `Raiz1234`
 
 **Salida esperada:**
 ```
@@ -517,7 +517,7 @@ chroot /sysroot
 
 ```bash
 passwd root
-# Introduce: R00t@Linux2024!
+# Introduce: Raiz1234
 ```
 
 4. Desbloquea root:
@@ -552,7 +552,7 @@ exit
 
 ```
 srv-linux-01 login: root
-Password: R00t@Linux2024!
+Password: Raiz1234
 ```
 
 **Salida esperada:**
@@ -711,7 +711,7 @@ error: file '/boot/grub/i386-pc/normal.mod' not found.
 
 ---
 
-#### Paso 3.3: Arrancar desde ISO de Ubuntu (modo rescate)
+#### Paso 3.3: Arrancar desde ISO de Ubuntu (solo Virtualbox modo rescate)
 
 **Objetivo:** Utilizar la ISO de instalación de Ubuntu como medio de rescate para acceder al sistema.
 
@@ -1025,7 +1025,7 @@ Give root password for maintenance
 (or press Control-D to continue): 
 ```
 
-6. Introduce la contraseña de root (`R00t@Linux2024!`) y explora el entorno de rescate:
+6. Introduce la contraseña de root (`Raiz1234`) y explora el entorno de rescate:
 
 ```bash
 # Verificar servicios activos en rescue mode
@@ -1057,7 +1057,7 @@ systemctl default
 
 ---
 
-### Paso Final: Documentar los procedimientos de recuperación
+### Paso Final (OPCIONAL): Documentar los procedimientos de recuperación
 
 **Objetivo:** Crear documentación profesional de los procedimientos ejecutados para referencia futura del equipo.
 
