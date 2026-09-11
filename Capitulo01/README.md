@@ -75,9 +75,13 @@ Usa el cliente de RDP proporcionado con los datos que te indique tu instructor.
 
 usuario: Netec
 password: Pa55w.rd123!
+
+Haz login en linux Ubuntu con el usuario: sysadmin  password: Raiz1234
 ```
 
 ```bash
+Abre una terminal y ejecuta los siguientes comandos:
+
 sudo apt update && sudo apt install -y lshw pciutils usbutils dmidecode htop tree
 ```
 
@@ -98,7 +102,7 @@ sudo chown root:root /opt/sysreport
 
 **Instrucciones:**
 
-1. Ejecuta el comando `lscpu` para obtener información completa del procesador:
+1. Ejecutar el comando `lscpu` para obtener información completa del procesador:
 
 ```bash
 1.1 Cambiate al usuario `root` con el siguiente comando: sudo bash
@@ -260,7 +264,7 @@ sudo fdisk -l /dev/sda
 
 **Salida Esperada:**
 
-Nota: El reporte podria ser diferente al aquí mostrado 
+Nota: El reporte podria ser diferente al aquí mostrado. 
 ```
 NAME   SIZE TYPE FSTYPE MOUNTPOINT        MODEL
 sda     40G disk                          VBOX HARDDISK
@@ -295,6 +299,7 @@ o si estas en una VM de Azure
 Listar dispositivos del bus virtual de Hyper-V (VMBus)
 
 ls -l /sys/bus/vmbus/devices/
+
 lsmod | grep hv_
 
 ```
@@ -340,7 +345,7 @@ lsusb -t
 } > /opt/sysreport/bus_devices_info.txt
 ```
 
-**Salida Esperada (ejemplo VirtualBox):**
+**Salida Esperada (ejemplo solo para VirtualBox):**
 
 ```
 00:00.0 Host bridge: Intel Corporation 440FX - 82441FX PMC [Natoma]
@@ -366,25 +371,25 @@ lspci | grep -qi "ethernet" && echo "✓ Tarjeta de red detectada" || echo "✗ 
 1. Ejecuta `lshw` en formato resumido:
 
 ```bash
-sudo lshw -short
+lshw -short
 ```
 
 2. Genera el inventario completo en formato HTML para referencia visual (opcional):
 
 ```bash
-sudo lshw -html > /opt/sysreport/hardware_full.html
+lshw -html > /opt/sysreport/hardware_full.html
 ```
 
 3. Genera el inventario en texto plano:
 
 ```bash
-sudo lshw > /opt/sysreport/hardware_full.txt
+lshw > /opt/sysreport/hardware_full.txt
 ```
 
 4. Extrae solo la clase de red para documentar las interfaces:
 
 ```bash
-sudo lshw -class network -short
+lshw -class network -short
 ```
 
 **Salida Esperada (`lshw -short`, extracto):**
@@ -471,7 +476,7 @@ lsmod | grep -iE '(ahci|ata|scsi|sd_mod)'
 } > /opt/sysreport/kernel_modules_info.txt
 ```
 
-**Salida Esperada (`modinfo e1000`, extracto):**
+**Salida Esperada (solo para virtualbox `modinfo e1000`, extracto):**
 
 ```
 filename:       /lib/modules/5.15.0-xxx-generic/kernel/drivers/net/ethernet/intel/e1000/e1000.ko
@@ -528,13 +533,18 @@ ls /sys/class/net/
 
 ```bash
 cat /sys/class/net/enp0s3/address
+
 o
+
 En Azure:
+
 cat /sys/class/net/eth0/address
 
 cat /sys/class/net/enp0s3/operstate
+
 o
 En Azure:
+
 cat /sys/class/net/eth0/operstate
 ```
 
@@ -542,6 +552,7 @@ cat /sys/class/net/eth0/operstate
 
 ```bash
 cat /sys/block/sda/size
+
 cat /sys/block/sda/device/model
 ```
 
@@ -588,13 +599,13 @@ cat /proc/version | grep -q "Linux" && echo "✓ /proc accesible" || echo "✗ E
 1. Revisa los mensajes del kernel durante el arranque actual:
 
 ```bash
-sudo dmesg | head -50
+dmesg | head -50
 ```
 
 2. Filtra los mensajes de error o advertencia del arranque:
 
 ```bash
-sudo dmesg --level=err,warn
+dmesg --level=err,warn
 ```
 
 3. Usa `journalctl` para ver los logs del arranque actual:
@@ -708,7 +719,7 @@ ping -c 3 192.168.100.1 (usar la IP asignada en la interface principal)
 } > /opt/sysreport/network_info.txt
 ```
 
-**Salida Esperada (extracto):**
+**Salida Esperada (ejemplo solo para virtualbox, extracto):**
 
 ```
 2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 ...
