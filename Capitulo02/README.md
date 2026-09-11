@@ -7,8 +7,9 @@
 | **Duración** | 72 minutos |
 | **Complejidad** | Alta |
 | **Nivel Bloom** | Aplicar |
-| **Máquina(s)** | srv-linux-01 (Ubuntu Server 22.04.4 LTS) |
+| **Máquina(s)** | srv-linux-01 (Ubuntu Server 22.04.4 LTS o superior) |
 | **IP** | 192.168.100.10 |
+| **Password de root en Azure** | Raiz1234 |
 
 ## 2. Descripción General
 
@@ -37,10 +38,10 @@ Al completar este laboratorio serás capaz de:
 
 ### Acceso requerido
 
-- VM srv-linux-01 operativa con Ubuntu Server 22.04.4 LTS
+- VM srv-linux-01 operativa con Ubuntu Server 22.04.4 LTS o superior
 - Acceso a la consola de VirtualBox (no SSH — se trabajará sin red en varios escenarios)
-- Imagen ISO de Ubuntu Server 22.04.4 LTS disponible para el modo rescate
-- Usuario `sysadmin` con contraseña `Linux@Admin2024!`
+- Imagen ISO de Ubuntu Server 22.04.4 LTS o superior disponible para el modo rescate
+- Usuario `root` con contraseña `Linux@Admin2024!`
 
 ## 5. Entorno del Laboratorio
 
@@ -53,9 +54,9 @@ Al completar este laboratorio serás capaz de:
 | RAM | 2048 MB |
 | Disco | /dev/sda 40 GB (sistema) |
 | Red | Adaptador 1: Red interna `syslab-network` / Adaptador 2: NAT |
-| ISO | Ubuntu Server 22.04.4 LTS o superior (montada en unidad óptica virtual) |
+| ISO | Ubuntu Server 22.04.4 LTS o superior o superior (montada en unidad óptica virtual) |
 
-### Preparación inicial
+### Preparación inicial (Solo en Virtualbox si se usa en los laboratorios)
 
 **CRÍTICO: Antes de iniciar cualquier escenario, crea un snapshot de la VM.**
 
@@ -80,7 +81,7 @@ Name: pre-lab02-clean (UUID: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)
 Ahora inicia sesión en srv-linux-01 y prepara el directorio de documentación:
 
 ```bash
-# Iniciar sesión como sysadmin
+# Iniciar sesión como root
 sudo mkdir -p /opt/sysreport
 sudo chown root:root /opt/sysreport
 ```
@@ -114,7 +115,7 @@ echo "--- Fecha de referencia: $(date) ---" >> /opt/sysreport/boot_baseline.txt
 1. Inicia sesión en srv-linux-01 como `root`:
 
 ```bash
-ssh sysadmin@192.168.100.10
+ssh root@192.168.100.10
 # O accede directamente por consola de VirtualBox
 ```
 
@@ -244,7 +245,7 @@ linux   /boot/vmlinuz-5.15.0-xxx-generic ro quiet splash
 srv-linux-01 login: _
 ```
 
-5. Inicia sesión como `sysadmin` y verifica el arranque:
+5. Inicia sesión como `root` y verifica el arranque:
 
 ```bash
 systemd-analyze
@@ -328,7 +329,7 @@ sudo reboot
 
 **Instrucciones:**
 
-1. Inicia sesión como `sysadmin` en srv-linux-01.
+1. Inicia sesión como `root` en srv-linux-01.
 
 2. Cambia la contraseña de root a un valor "desconocido" (simula que alguien la cambió sin documentar):
 
@@ -337,11 +338,11 @@ sudo reboot
 echo "root:ContraseñaOlvidada123!" | sudo chpasswd
 ```
 
-3. Para hacer el escenario más realista, bloquea también la cuenta de sysadmin temporalmente (simula que no puedes hacer sudo):
+3. Para hacer el escenario más realista, bloquea también la cuenta de root temporalmente (simula que no puedes hacer sudo):
 
 ```bash
 # IMPORTANTE: Esto te dejará sin acceso administrativo
-sudo passwd -l sysadmin
+sudo passwd -l root
 ```
 
 4. Cierra la sesión:
@@ -362,10 +363,10 @@ Password: R00t@Linux2024!
 Login incorrect
 ```
 
-6. Intenta iniciar sesión como sysadmin:
+6. Intenta iniciar sesión como root:
 
 ```
-srv-linux-01 login: sysadmin
+srv-linux-01 login: root
 Password: Linux@Admin2024!
 ```
 
@@ -464,10 +465,10 @@ Retype new password:
 passwd: password updated successfully
 ```
 
-4. Desbloquea la cuenta de sysadmin:
+4. Desbloquea la cuenta de root:
 
 ```bash
-passwd -u sysadmin
+passwd -u root
 ```
 
 **Salida esperada:**
@@ -516,10 +517,10 @@ passwd root
 # Introduce: R00t@Linux2024!
 ```
 
-4. Desbloquea sysadmin:
+4. Desbloquea root:
 
 ```bash
-passwd -u sysadmin
+passwd -u root
 ```
 
 5. En sistemas con SELinux (Rocky Linux), crea el archivo de relabeling:
@@ -557,16 +558,16 @@ Welcome to Ubuntu 22.04.4 LTS (GNU/Linux 5.15.0-xxx-generic x86_64)
 root@srv-linux-01:~#
 ```
 
-2. Verifica que sysadmin puede hacer login y sudo:
+2. Verifica que root puede hacer login y sudo:
 
 ```bash
-su - sysadmin
+su - root
 sudo whoami
 ```
 
 **Salida esperada:**
 ```
-[sudo] password for sysadmin: 
+[sudo] password for root: 
 root
 ```
 
@@ -587,7 +588,7 @@ running
 journalctl -b --priority=err --no-pager | head -20
 ```
 
-**Verificación:** Ambas cuentas (root y sysadmin) son accesibles con sus contraseñas documentadas.
+**Verificación:** La cuenta root es accesible con su contraseña documentada.
 
 ---
 
@@ -601,7 +602,7 @@ journalctl -b --priority=err --no-pager | head -20
 
 **Instrucciones:**
 
-1. Inicia sesión como `sysadmin` en srv-linux-01.
+1. Inicia sesión como `root` en srv-linux-01.
 
 2. Primero, verifica la ubicación actual de GRUB:
 
@@ -715,7 +716,7 @@ error: file '/boot/grub/i386-pc/normal.mod' not found.
 
 1. En VirtualBox, accede a la configuración de la VM:
    - Configuración → Almacenamiento → Controlador IDE
-   - Añade la ISO de Ubuntu Server 22.04.4 LTS como disco óptico
+   - Añade la ISO de Ubuntu Server 22.04.4 LTS o superior como disco óptico
    - Configuración → Sistema → Orden de arranque: coloca "Óptico" antes de "Disco duro"
 
 2. Inicia la VM. Debería arrancar desde la ISO.
@@ -955,7 +956,7 @@ reboot
 
 **Instrucciones:**
 
-1. Inicia sesión como `sysadmin`.
+1. Inicia sesión como `root`.
 
 2. Verifica el target actual del sistema:
 
@@ -1059,7 +1060,7 @@ systemctl default
 
 **Instrucciones:**
 
-1. Inicia sesión como `sysadmin` y crea el documento de procedimientos:
+1. Inicia sesión como `root` y crea el documento de procedimientos:
 
 ```bash
 cat > /opt/sysreport/recovery_procedures.txt << 'EOF'
@@ -1067,8 +1068,8 @@ cat > /opt/sysreport/recovery_procedures.txt << 'EOF'
 PROCEDIMIENTOS DE RECUPERACIÓN DE ARRANQUE - srv-linux-01
 ============================================================
 Fecha: $(date)
-Administrador: sysadmin
-Sistema: Ubuntu Server 22.04.4 LTS
+Administrador: root
+Sistema: Ubuntu Server 22.04.4 LTS o superior
 ============================================================
 
 ESCENARIO 1: PARÁMETROS INCORRECTOS EN GRUB2
@@ -1189,7 +1190,7 @@ head -5 /opt/sysreport/recovery_procedures.txt
 PROCEDIMIENTOS DE RECUPERACIÓN DE ARRANQUE - srv-linux-01
 ============================================================
 Fecha: Mon Mar XX HH:MM:SS UTC 2024
-Administrador: sysadmin
+Administrador: root
 ```
 
 ---
