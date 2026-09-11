@@ -31,7 +31,7 @@ Al completar este laboratorio serás capaz de:
 
 ### Acceso y recursos necesarios
 - Acceso a HyperV Server Administration instalado y funcional en el equipo anfitrión.
-- ISO de Ubuntu Server 22.04.4 LTS o superior descargada (`ubuntu-22.04.4-live-server-amd64.iso`).
+- ISO de Ubuntu Server 22.04.4 LTS o superior descargada (`ubuntu-22.04.4-live-server-amd64.iso` o similar).
 - Al menos 70 GB de espacio libre en disco del anfitrión para los discos virtuales.
 - Acceso administrativo al equipo anfitrión para crear y configurar máquinas virtuales.
 - Red interna `syslab-network` ya creada en Azure (del Lab 01).
@@ -44,8 +44,8 @@ Al completar este laboratorio serás capaz de:
 |------------|---------------|
 | **Nombre VM** | srv-linux-02 |
 | **Sistema operativo** | Ubuntu Server 22.04.4 LTS o superior (64-bit) |
-| **RAM** | 4096 MB |
-| **CPUs** | 2 |
+| **RAM** | 8192 MB |
+| **CPUs** | 2 mínimo |
 | **Disco 1 (/dev/sda)** | 60 GB — VDI, dinámico — Sistema operativo |
 | **Disco 2 (/dev/sdb)** | 20 GB — VDI, dinámico — Datos |
 | **Disco 3 (/dev/sdc)** | 20 GB — VDI, dinámico — Respaldo |
@@ -65,13 +65,20 @@ Al completar este laboratorio serás capaz de:
 | /dev/sda6 | /opt | 10 GB | xfs | Aplicaciones empresariales |
 | /dev/sda7 | swap | 4 GB | swap | Memoria virtual |
 
-### Comandos de preparación en VirtualBox (ejecutar en el anfitrión)
+### En Azure crear la VM y los recursos necesarios segun se especifica.
 
 ```bash
-# Crear la máquina virtual
-Con el administrador de 
+Con el administrador de Hiper-V de Windows Server
 
-# Configurar recursos
+# Una VM con 8GB RAM, 3 discos duros de 50Gb (disco del SO), 20Gb y 20Gb
+
+```
+### Comandos de preparación (en VirtualBox ejecutar en el anfitrión)
+
+```bash
+# Crear la máquina virtual con el administrador de Virtualbox
+
+# En Virtualbox, configurar recursos
 VBoxManage modifyvm "srv-linux-02" --memory 4096 --cpus 2 --firmware efi
 
 # Crear controlador SATA
@@ -139,7 +146,7 @@ VBoxManage modifyvm "srv-linux-02" --boot1 dvd --boot2 disk --boot3 none --boot4
    - Your name: `System Administrator`
    - Your server's name: `srv-linux-02`
    - Pick a username: `sysadmin`
-   - Password: `Linux@Admin2024!`
+   - Password: `Raiz1234`
 
 8. En la pantalla de SSH, marca **"Install OpenSSH server"**.
 
@@ -451,7 +458,7 @@ Salida esperada (los UUIDs variarán):
 4. Configura el perfil del servidor:
    - Server name: `srv-linux-02`
    - Username: `sysadmin`
-   - Password: `Linux@Admin2024!`
+   - Password: `Raiz1234`
 
 5. Habilita **OpenSSH server** en la pantalla de servicios.
 
@@ -917,7 +924,7 @@ ls -la /opt/
 
 ---
 
-## 7. Validación y Pruebas Finales
+## 7. Validación y Pruebas Finales (OPCIONAL).
 
 Ejecuta el siguiente script de validación para confirmar que todos los objetivos del laboratorio se han cumplido:
 
