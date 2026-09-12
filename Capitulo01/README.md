@@ -33,7 +33,7 @@ En este laboratorio realizarás un inventario exhaustivo del hardware, los módu
 
 - VM Windows Server con Acceso via RDP con el usuario: Netec  password: Pa55w.rd123!
 - Acceder el Hyper-V Manager y encender la VM srv-linux-01  
-- Con la VM `srv-linux-01` encendida y accesible vía SSH o consola gráfica directa, acceder linux con el usuario: sysadmin  y el password: Raiz1234
+- Con la VM `srv-linux-01` encendida y acceder a linux con el usuario: sysadmin  y el password: Raiz1234
 - El usuario `sysadmin` debe tener el acceso `sudo` configurado.
 
 ## Entorno del Laboratorio
@@ -44,9 +44,9 @@ En este laboratorio realizarás un inventario exhaustivo del hardware, los módu
 |---------|---------------|
 | CPU | 4 vCPUs (x86_64) |
 | RAM | 4 GB mínimo |
-| Disco sistema | `/dev/sda` — 40 GB o superior |
-| Red Adaptador 1 | Red interna `syslab-network` (192.168.10.100/24) - Las IP´s configuradas pueden ser diferentes - |
-| Red Adaptador 2 | NAT (acceso a internet) - Las IP´s configuradas pueden ser diferentes -|
+| Disco sistema | `/dev/sda` — 20 GB o superior |
+| Red Adaptador eth0 | Red interna `syslab-network` (192.168.100.10/24) - Las IP´s configuradas podrian ser diferentes - |
+| Red Adaptador eth1 | NAT (acceso a internet) - Las IP´s configuradas pueden ser diferentes -|
 
 ### Software Requerido
 
@@ -67,11 +67,7 @@ En este laboratorio realizarás un inventario exhaustivo del hardware, los módu
 Conéctate al servidor usando los datos que te de tu instructor e instala las herramientas necesarias:
 
 ```bash
-ssh sysadmin@192.168.10.100 (los datos de conexión pueden ser diferentes)
-
-o
-
-Usa el cliente de RDP proporcionado con los datos que te indique tu instructor.
+Usa el cliente de RDP proporcionado con los datos proporcionados por tu instructor.
 
 usuario: Netec
 password: Pa55w.rd123!
@@ -105,7 +101,12 @@ sudo chown root:root /opt/sysreport
 1. Ejecutar el comando `lscpu` para obtener información completa del procesador:
 
 ```bash
-1.1 Cambiate al usuario `root` con el siguiente comando: sudo bash
+1.1 Cambiate al usuario `root` con el siguiente comando, para no usar "sudo" en cada comando:
+
+sudo bash
+passwd: Raiz1234
+#
+
 1.2 Ejecuta los siguientes comandos que se te indican.
 
 lscpu
