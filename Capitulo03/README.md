@@ -100,7 +100,7 @@ Con el administrador de Hiper-V de Windows Server, verificar que esten creado lo
    Identify Keyboard [Spanish LatinAmerica] [Done]
    Base installation (Ubuntu Server) [Done]
 
-5. En la pantalla de configuración de red, configura la interfaz `eth1` manualmente:
+5. En la pantalla de configuración de red, configura la interfaz `eth0` manualmente:
    - Subnet: `192.168.100.0/24`
    - Address (manual/privada): `192.168.100.20/24`
    - Gateway: `192.168.100.1`
@@ -110,7 +110,6 @@ Con el administrador de Hiper-V de Windows Server, verificar que esten creado lo
    - Configure a custom storage layout (X) Custom storage layout
    - Select in Available Devices [Local Disk 60 GB]
    - Bajar donde dice "free space" y luego [Add GPT Partition]
-   - 
    - Selecciona `/dev/sda` → "Add GPT Partition Table"
    - Crea partición 1: Tamaño 512M, formato fat32, montaje `/boot/efi`
    - Crea partición 2: Tamaño 1G, formato ext4, montaje `/boot`
