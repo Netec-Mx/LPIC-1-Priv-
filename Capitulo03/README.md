@@ -173,24 +173,15 @@ Salida esperada:
    sudo shutdown -h now
    ```
 
-2. Reconecta la ISO al drive virtual desde VirtualBox (o vía línea de comandos):
-   ```bash
-   VBoxManage storageattach "srv-linux-02" --storagectl "IDE" --port 0 --device 0 --type dvddrive --medium "/ruta/a/ubuntu-22.04.4-live-server-amd64.iso"
-   ```
-
+2. Reconecta la ISO al drive virtual (DVD) desde Hyper-V Manager.
+  
 3. Cambia el orden de arranque para iniciar desde DVD:
-   ```bash
-   VBoxManage modifyvm "srv-linux-02" --boot1 dvd --boot2 disk
-   ```
-
+  
 4. Inicia la VM:
-   ```bash
-   VBoxManage startvm "srv-linux-02" --type gui
-   ```
+ 
+5. En el menú GRUB del instalador, selecciona **"Try or Install Ubuntu Server"**. Cuando aparezca la primera pantalla del instalador (selección de idioma), presiona **Ctrl+Shift-Alt+F2** para acceder a una consola shell.
 
-5. En el menú GRUB del instalador, selecciona **"Try or Install Ubuntu Server"**. Cuando aparezca la primera pantalla del instalador (selección de idioma), presiona **Ctrl+Alt+F2** (o en VirtualBox: Host+F2) para acceder a una consola shell.
-
-   > Si no puedes acceder a un shell con Ctrl+Shift+Alt+F2, selecciona el idioma y avanza hasta la pantalla de "Storage configuration". Desde ahí puedes seleccionar "Shell" si el instalador lo ofrece, o bien usa el enfoque alternativo del Paso 2b.
+   > Si no puedes acceder a un shell, selecciona el idioma y avanza hasta la pantalla de "Storage configuration". Desde ahí puedes seleccionar "Shell" si el instalador lo ofrece.
 
 6. Una vez en el shell, verifica los discos disponibles:
    ```bash
@@ -218,6 +209,7 @@ Salida esperada:
    This option deletes all partitions and creates a new protective MBR.
    Proceed? (Y/N): Y
    ```
+Nota: Los siguientes pasos son ilustrativos y no son necesarios, puedes realizarlos a traves de instalación interaciva de Linux. Sigue las instrucciones que te de tu instructor y después retoma la práctica en el paso 5.
 
 9. Crea la **Partición 1** — EFI System Partition (512 MB):
    ```
@@ -404,7 +396,7 @@ Salida esperada (los UUIDs variarán):
 
 ---
 
-### Paso 4: Instalar Ubuntu Server en el esquema de particiones creado
+### Paso 4: Instalar Ubuntu Server en el esquema de particiones creado.
 
 **Objetivo:** Completar la instalación de Ubuntu Server 22.04.4 LTS o superior utilizando el esquema de particiones GPT empresarial recién creado.
 
