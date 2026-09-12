@@ -8,7 +8,7 @@
 | **Complejidad** | Alta |
 | **Nivel Bloom** | Aplicar |
 | **Máquina(s)** | srv-linux-01 (Ubuntu Server 22.04.4 LTS o superior) |
-| **IP** | 192.168.10.100 |
+| **IP** | 192.168.100.10 |
 | **Password de root en Azure** | Raiz1234 |
 
 ## 2. Descripción General
