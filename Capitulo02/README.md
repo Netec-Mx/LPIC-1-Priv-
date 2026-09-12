@@ -15,7 +15,7 @@
 
 En este laboratorio simularás tres escenarios de falla de arranque en un servidor Linux de producción y los resolverás aplicando técnicas profesionales de recuperación. Trabajarás con modificaciones incorrectas en GRUB2, recuperación de contraseña de root mediante `rd.break`, y reinstalación completa del gestor de arranque desde un entorno de rescate. Cada escenario representa una situación real que un administrador de sistemas enfrenta en entornos empresariales.
 
-Nota importante:  Este laboratorio no es realizable en Azure, solo podra hacerse en ambientes de hardware real o virtualizacion local de Linux usando Virtualbox o VMWare Workstation.
+Nota importante:  Este laboratorio no es realizable totalmente en Azure, pero podra hacerse en ambientes de hardware real o virtualizacion local de Linux usando Virtualbox o VMWare Workstation.
 
 ## 3. Objetivos de Aprendizaje
 
@@ -41,7 +41,7 @@ Al completar este laboratorio serás capaz de:
 - VM srv-linux-01 operativa con Ubuntu Server 22.04.4 LTS o superior
 - Acceso a la consola de gráfica de Linux (no SSH — se trabajará sin red en varios escenarios)
 - Imagen ISO de Ubuntu Server 22.04.4 LTS o superior disponible para el modo rescate
-- Usuario `root` con contraseña `Raiz1234`
+- Usuario `sysadmin y root` con contraseña `Raiz1234`
 
 ## 5. Entorno del Laboratorio
 
@@ -51,7 +51,7 @@ Al completar este laboratorio serás capaz de:
 |---------|---------------|
 | VM | srv-linux-01 |
 | CPU | 2 vCPU mínimo |
-| RAM | 2048 MB mínimo |
+| RAM | 4 GB mínimo |
 | Disco | /dev/sda 40 GB mínimo (sistema) |
 | Red | Adaptador 1: Red interna `syslab-network` / Adaptador 2: NAT |
 | ISO | Ubuntu Server 22.04.4 LTS o superior o superior (montada en unidad óptica virtual) |
@@ -98,7 +98,7 @@ echo "--- Fecha de referencia: $(date) ---" >> /opt/sysreport/boot_baseline.txt
 
 ---
 
-## 6. Procedimiento Paso a Paso (Si estas usando una VM en Azure sigue los pasos que te indique tu instructor)
+## 6. Procedimiento Paso a Paso (Si estas usando una VM en Azure sigue la instrucciones que te indique tu instructor)
 
 ---
 
