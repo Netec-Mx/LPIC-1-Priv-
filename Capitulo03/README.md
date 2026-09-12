@@ -32,7 +32,7 @@ Al completar este laboratorio serás capaz de:
 ### Acceso y recursos necesarios
 - Acceso a HyperV Server Administration instalado y funcional en el equipo anfitrión.
 - ISO de Ubuntu Server 22.04.4 LTS o superior descargada (`ubuntu-22.04.4-live-server-amd64.iso` o similar).
-- Al menos 70 GB de espacio libre en disco del anfitrión para los discos virtuales.
+- Al menos 90 GB de espacio libre en disco del anfitrión para los discos virtuales.
 - Acceso administrativo al equipo anfitrión para crear y configurar máquinas virtuales.
 - Red interna `syslab-network` ya creada en Azure (del Lab 01).
 
@@ -68,41 +68,11 @@ Al completar este laboratorio serás capaz de:
 ### En Azure crear la VM y los recursos necesarios segun se especifica.
 
 ```bash
-Con el administrador de Hiper-V de Windows Server
+Con el administrador de Hiper-V de Windows Server, verificar que esten creado los recursos.
 
-# Una VM con 8GB RAM, 3 discos duros de 50Gb (disco del SO) y dos discos adicionles de 20Gb.
+# Una VM con 8GB RAM, 3 discos duros: Uno de 60Gb (disco del SO) y dos discos adicionales de 20Gb.
+# En Azure con Windows Server y Hyper-V Manager el ambiente ya esta preparado y listo para usarse.
 
-```
-### Comandos de preparación (solo en VirtualBox ejecutar en el anfitrión)
-
-```bash
-# Crear la máquina virtual con el administrador de Virtualbox
-
-# En Virtualbox, configurar recursos
-VBoxManage modifyvm "srv-linux-02" --memory 4096 --cpus 2 --firmware efi
-
-# Crear controlador SATA
-VBoxManage storagectl "srv-linux-02" --name "SATA" --add sata --controller IntelAhci --portcount 6
-
-# Crear discos virtuales
-VBoxManage createmedium disk --filename "$HOME/VirtualBox VMs/srv-linux-02/sda-system.vdi" --size 61440 --format VDI
-VBoxManage createmedium disk --filename "$HOME/VirtualBox VMs/srv-linux-02/sdb-data.vdi" --size 20480 --format VDI
-VBoxManage createmedium disk --filename "$HOME/VirtualBox VMs/srv-linux-02/sdc-backup.vdi" --size 20480 --format VDI
-
-# Conectar discos al controlador
-VBoxManage storageattach "srv-linux-02" --storagectl "SATA" --port 0 --device 0 --type hdd --medium "$HOME/VirtualBox VMs/srv-linux-02/sda-system.vdi"
-VBoxManage storageattach "srv-linux-02" --storagectl "SATA" --port 1 --device 0 --type hdd --medium "$HOME/VirtualBox VMs/srv-linux-02/sdb-data.vdi"
-VBoxManage storageattach "srv-linux-02" --storagectl "SATA" --port 2 --device 0 --type hdd --medium "$HOME/VirtualBox VMs/srv-linux-02/sdc-backup.vdi"
-
-# Conectar ISO de instalación
-VBoxManage storagectl "srv-linux-02" --name "IDE" --add ide
-VBoxManage storageattach "srv-linux-02" --storagectl "IDE" --port 0 --device 0 --type dvddrive --medium "/ruta/a/ubuntu-22.04.4-live-server-amd64.iso"
-
-# Configurar red interna
-VBoxManage modifyvm "srv-linux-02" --nic1 intnet --intnet1 "syslab-network"
-
-# Configurar orden de arranque
-VBoxManage modifyvm "srv-linux-02" --boot1 dvd --boot2 disk --boot3 none --boot4 none
 ```
 
 > **Nota:** Ajusta `/ruta/a/ubuntu-22.04.4-live-server-amd64.iso` a la ubicación real de tu ISO.
@@ -117,42 +87,50 @@ VBoxManage modifyvm "srv-linux-02" --boot1 dvd --boot2 disk --boot3 none --boot4
 
 **Instrucciones:**
 
-1. Inicia la VM `srv-linux-02` desde VirtualBox:
+1. Inicia la VM **`srv-linux-02` desde HyperV-Manager**:
    ```bash
-   VBoxManage startvm "srv-linux-02" --type gui
+   Elegir la máquina indicada con le boton del mouse derecho y dar "connect" y después "start" para iniciarla.
    ```
 
 2. En el menú GRUB del instalador, selecciona **"Try or Install Ubuntu Server"**.
 
 3. Selecciona el idioma **English** (el sistema se administrará en inglés para consistencia con los labs).
 
-4. En la pantalla de configuración de red, configura la interfaz `enp0s3` manualmente:
+   Elegir despues [contiue without updating]
+   Identify Keyboard [Spanish LatinAmerica] [Done]
+   Base installation (Ubuntu Server) [Done]
+
+5. En la pantalla de configuración de red, configura la interfaz `eth1` manualmente:
    - Subnet: `192.168.100.0/24`
-   - Address: `192.168.100.20`
+   - Address (manual/privada): `192.168.100.20/24`
    - Gateway: `192.168.100.1`
-   - Name servers: `8.8.8.8`
-
-5. En la pantalla de almacenamiento (**Storage configuration**), selecciona **"Custom storage layout"** (diseño personalizado).
-
-6. Para esta instalación inicial, crea un esquema **temporal mínimo** en `/dev/sda`:
+   - Name servers: `8.8.8.8` [Done]
+   - Proxy Address: [Enter] [Done]
+   - Mirror Address: [Borrar la URL] [Done]
+   - Configure a custom storage layout (X) Custom storage layout
+   - Select in Available Devices [Local Disk 60 GB]
+   - Bajar donde dice "free space" y luego [Add GPT Partition]
+   - 
    - Selecciona `/dev/sda` → "Add GPT Partition Table"
    - Crea partición 1: Tamaño 512M, formato fat32, montaje `/boot/efi`
    - Crea partición 2: Tamaño 1G, formato ext4, montaje `/boot`
-   - Crea partición 3: Tamaño restante (~58.5G), formato ext4, montaje `/`
+   - Crea partición 3: Tamaño restante (~58.5G), formato ext4, montaje `/` [Done]
+   - Para seguir la instalación elegir [Continue]
 
    > **Importante:** Este esquema temporal nos permite instalar el sistema base. Luego reparticionaremos manualmente para lograr el esquema empresarial objetivo.
 
-7. Configura el perfil del servidor:
+8. Configura el perfil del servidor:
    - Your name: `System Administrator`
    - Your server's name: `srv-linux-02`
    - Pick a username: `sysadmin`
    - Password: `Raiz1234`
+   - (X) Skip Ubuntu-PRO [Continue]
+     
+9. En la pantalla de SSH, marca **"Install OpenSSH server"**.
 
-8. En la pantalla de SSH, marca **"Install OpenSSH server"**.
+10. No selecciones ningún snap adicional. Procede con la instalación.
 
-9. No selecciones ningún snap adicional. Procede con la instalación.
-
-10. Cuando la instalación finalice, selecciona **"Reboot Now"**. Retira la ISO virtual cuando se solicite (o presiona Enter si ya se desconectó automáticamente).
+11. Cuando la instalación finalice, selecciona **"Reboot Now"**. Retira la ISO virtual cuando se solicite (o presiona Enter si ya se desconectó automáticamente).
 
 **Salida esperada:**
 
