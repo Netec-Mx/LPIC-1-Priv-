@@ -102,11 +102,11 @@ Con el administrador de Hiper-V de Windows Server, verificar que esten creado lo
 
 5. En la pantalla de configuración de red, configura la interfaz `eth0` manualmente:
    - Subnet: `192.168.100.0/24`
-   - Address (manual/privada): `192.168.100.20/24`
+   - Address eth0 (manual/privada): `192.168.100.20/24`
    - Gateway: `192.168.100.1`
    - Name servers: `8.8.8.8` [Done]
    - Proxy Address: [Enter] [Done]
-   - Mirror Address: [Borrar la URL] [Done]
+   - Mirror Address: [Borrar la URL] [Done] 
    - Configure a custom storage layout (X) Custom storage layout
    - Select in Available Devices [Local Disk 60 GB]
    - Bajar donde dice "free space" y luego [Add GPT Partition]
@@ -190,7 +190,7 @@ Salida esperada:
 
 5. En el menú GRUB del instalador, selecciona **"Try or Install Ubuntu Server"**. Cuando aparezca la primera pantalla del instalador (selección de idioma), presiona **Ctrl+Alt+F2** (o en VirtualBox: Host+F2) para acceder a una consola shell.
 
-   > Si no puedes acceder a un shell con Ctrl+Alt+F2, selecciona el idioma y avanza hasta la pantalla de "Storage configuration". Desde ahí puedes seleccionar "Shell" si el instalador lo ofrece, o bien usa el enfoque alternativo del Paso 2b.
+   > Si no puedes acceder a un shell con Ctrl+Shift+Alt+F2, selecciona el idioma y avanza hasta la pantalla de "Storage configuration". Desde ahí puedes seleccionar "Shell" si el instalador lo ofrece, o bien usa el enfoque alternativo del Paso 2b.
 
 6. Una vez en el shell, verifica los discos disponibles:
    ```bash
