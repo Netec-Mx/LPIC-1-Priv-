@@ -41,7 +41,7 @@ Al completar este laboratorio serás capaz de:
 - VM srv-linux-01 operativa con Ubuntu Server 22.04.4 LTS o superior
 - Acceso a la consola de gráfica de Linux (no SSH — se trabajará sin red en varios escenarios)
 - Imagen ISO de Ubuntu Server 22.04.4 LTS o superior disponible para el modo rescate
-- Usuario `sysadmin y root` con contraseña `Raiz1234`
+- Usuario `sysadmin/root` con contraseña `Raiz1234`
 
 ## 5. Entorno del Laboratorio
 
@@ -56,29 +56,9 @@ Al completar este laboratorio serás capaz de:
 | Red | Adaptador 1: Red interna `syslab-network` / Adaptador 2: NAT |
 | ISO | Ubuntu Server 22.04.4 LTS o superior o superior (montada en unidad óptica virtual) |
 
-### Preparación inicial (OPCIONAL: Solo si se usa Virtualbox en los laboratorios)
+**CRÍTICO: Antes de iniciar cualquier escenario, se recomienda crear un snapshot de la VM.**
 
-**CRÍTICO: Antes de iniciar cualquier escenario, crea un snapshot de la VM.**
-
-```bash
-# Desde el HOST (no dentro de la VM) — en la terminal del hipervisor
-VBoxManage snapshot "srv-linux-01" take "pre-lab02-clean" \
-  --description "Estado limpio antes del lab 02 de recuperación de arranque"
-```
-
-Verifica que el snapshot se creó correctamente:
-
-```bash
-VBoxManage snapshot "srv-linux-01" list
-```
-
-**Salida esperada:**
-```
-Name: pre-lab02-clean (UUID: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)
-   This is the current snapshot
-```
-
-Ahora inicia sesión en srv-linux-01 y prepara el directorio de documentación:
+Inicia sesión en srv-linux-01 y prepara el directorio de documentación:
 
 ```bash
 # Iniciar sesión como root
