@@ -100,20 +100,39 @@ Con el administrador de Hiper-V de Windows Server, verificar que esten creado lo
 
 3. Selecciona el idioma **English** (el sistema se administrará en inglés para consistencia con los labs).
 
-   Elegir despues [contiue without updating]
+   Elegir despues [continue without updating]
    Identify Keyboard [Spanish LatinAmerica] [Done]
-   Base installation (Ubuntu Server) [Done]
+   Base installation (X) Ubuntu Server [Done]
 
-5. En la pantalla de configuración de red, configura la interfaz `eth0` manualmente:
-   - Subnet: `192.168.100.0/24`
-   - Address eth0 (manual/privada): `192.168.100.20/24`
+5. En la pantalla de configuración de red.
+   
+   Elige con "TAB" configurar la interfaz `eth0` manualmente [Enter]->[Edit IPv4] [Enter]:
+
+   - IPv4 Method: [Manual] [Enter]  
+   - Subnet:  `192.168.100.0/24`
+   - Address: `192.168.100.20/24`
    - Gateway: `192.168.100.1`
-   - Name servers: `8.8.8.8` [Done]
+   - Name servers: `8.8.8.8`
+   - Search domains: [Enter]
+
+   Elige con "TAB" configurar la interfaz `eth1` manualmente [Enter]->[Edit IPv4] [Enter]:
+
+   - IPv4 Method: [Automatic] [DHCP]
+   - [Save] [TAB][TAB]
+   - [Done]
    - Proxy Address: [Enter] [Done]
-   - Mirror Address: [Borrar la URL] [Done] 
-   - Configure a custom storage layout (X) Custom storage layout
-   - Select in Available Devices [Local Disk 60 GB]
-   - Bajar donde dice "free space" y luego [Add GPT Partition]
+   - Ubuntu Mirror Address Configuration: [Enter] [Done]
+   - [Continue]
+
+   Guided Storage Configuration
+   Elegir:
+   - (X) Custom storage layout [Done]
+   - Select in Available Devices [Local Disk 60 GB][Enter]
+   - Elegir: Using as boot device
+
+   En: FILESYSTEM SUMMARY aparece
+   [/boot/efi 1.04GB  new fat 32 new parition of local disk]
+   Bajar hasta donde dice: "free space" y luego [Add GPT Partition]
    - Selecciona `/dev/sda` → "Add GPT Partition Table"
    - Crea partición 1: Tamaño 512M, formato fat32, montaje `/boot/efi`
    - Crea partición 2: Tamaño 1G, formato ext4, montaje `/boot`
