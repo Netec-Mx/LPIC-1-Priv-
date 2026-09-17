@@ -134,9 +134,12 @@ Con el administrador de Hiper-V de Windows Server, verificar que esten creado lo
    [/boot/efi 1.04GB  new fat 32 new parition of local disk]
    Bajar hasta donde dice: "free space" y luego [Add GPT Partition]
    - Selecciona `/dev/sda` → "Add GPT Partition Table"
-   - Crea partición 1: Tamaño 512M, formato fat32, montaje `/boot/efi`
-   - Crea partición 2: Tamaño 1G, formato ext4, montaje `/boot`
-   - Crea partición 3: Tamaño restante (~58.5G), formato ext4, montaje `/` [Done]
+   - Crea partición: Tamaño 512m, formato ext4, montaje `/boot` [Create]
+   - Crea partición: Tamaño 20g, formato ext4, montaje `/` [Create]
+   - Crea partición: Tamaño 15g, formato xfs, montaje `/var` [Create]
+   - Crea partición: Tamaño 10g, formato ext4, montaje `/home` [Create]
+   - Crea partición: Tamaño 15g, formato xfs, montaje `/opt` [Create]
+   - Crea partición: Tamaño restante, formato swap, montaje `swap` [Create]
    - Para seguir la instalación elegir [Continue]
 
    > **Importante:** Este esquema temporal nos permite instalar el sistema base. Luego reparticionaremos manualmente para lograr el esquema empresarial objetivo.
@@ -183,7 +186,8 @@ Salida esperada:
 
 ---
 
-### Paso 2: Preparar el disco /dev/sda con el esquema GPT empresarial
+### PROCEDIMIENTO OPCIONAL -Metodo Manual-
+### Preparar el disco /dev/sda con el esquema GPT empresarial
 
 **Objetivo:** Reconfigurar el disco principal con el esquema de siete particiones GPT diseñado para operación empresarial, utilizando un enfoque de reinstalación limpia con las herramientas del entorno live.
 
@@ -342,7 +346,7 @@ sda      8:0    0   60G  0 disk
 
 ---
 
-### Paso 3: Crear los sistemas de archivos
+### Crear los sistemas de archivos
 
 **Objetivo:** Formatear cada partición con el sistema de archivos apropiado según su función, aplicando opciones de optimización.
 
@@ -419,7 +423,7 @@ Salida esperada (los UUIDs variarán):
 
 ---
 
-### Paso 4: Instalar Ubuntu Server en el esquema de particiones creado.
+### Instalar Ubuntu Server en el esquema de particiones creado.
 
 **Objetivo:** Completar la instalación de Ubuntu Server 22.04.4 LTS o superior utilizando el esquema de particiones GPT empresarial recién creado.
 
@@ -514,7 +518,7 @@ Swap:          4.0Gi          0B       4.0Gi
 
 ---
 
-### Paso 5: Configurar /etc/fstab con UUIDs y opciones de montaje optimizadas
+### Configurar /etc/fstab con UUIDs y opciones de montaje optimizadas
 
 **Objetivo:** Verificar y optimizar la configuración de montaje persistente en `/etc/fstab`, asegurando que se usen UUIDs y opciones de montaje apropiadas para cada sistema de archivos.
 
@@ -598,7 +602,7 @@ NAME      TYPE      SIZE USED PRIO
 
 ---
 
-### Paso 6: Verificar la integridad de los sistemas de archivos
+### Verificar la integridad de los sistemas de archivos
 
 **Objetivo:** Utilizar las herramientas `tune2fs`, `dumpe2fs` y `xfs_info` para inspeccionar los metadatos y la salud de los sistemas de archivos creados.
 
@@ -672,13 +676,13 @@ df -hT --output=source,fstype,size,used,avail,pcent,target | grep sda
 
 ---
 
-### Paso 7: Simular y reparar errores en sistemas de archivos
+### Simular y reparar errores en sistemas de archivos
 
 **Objetivo:** Practicar la detección y reparación de errores en sistemas de archivos ext4 y xfs utilizando `fsck`, `e2fsck` y `xfs_repair` en modo offline.
 
 **Instrucciones:**
 
-#### 7a: Reparación de sistema de archivos ext4 (/home)
+#### a: Reparación de sistema de archivos ext4 (/home)
 
 1. Desmonta la partición `/home` (asegúrate de que ningún proceso la esté usando):
    ```bash
@@ -754,7 +758,7 @@ df -hT --output=source,fstype,size,used,avail,pcent,target | grep sda
    sudo mount /home
    ```
 
-#### 7b: Verificación de sistema de archivos XFS (/opt)
+#### Verificación de sistema de archivos XFS (/opt)
 
 1. Desmonta `/opt`:
    ```bash
@@ -822,7 +826,7 @@ sudo dmesg | grep -i "error\|corrupt\|fail" | grep -i "sda" | tail -5
 
 ---
 
-### Paso 8: Configurar la red y finalizar la preparación del servidor
+### Configurar la red y finalizar la preparación del servidor
 
 **Objetivo:** Configurar la dirección IP estática definitiva de srv-linux-02 y verificar la conectividad dentro de la red del laboratorio.
 
@@ -833,7 +837,7 @@ sudo dmesg | grep -i "error\|corrupt\|fail" | grep -i "sda" | tail -5
    ip link show
    ```
 
-   La interfaz principal será `enp0s3` (o similar).
+   La interfaz principal será `eth0`o `enp0s3`.
 
 2. Configura la IP estática usando Netplan:
    ```bash
@@ -916,7 +920,7 @@ ls -la /opt/
 
 ---
 
-## 7. Validación y Pruebas Finales (OPCIONAL).
+## Validación y Pruebas Finales (OPCIONAL).
 
 Ejecuta el siguiente script de validación para confirmar que todos los objetivos del laboratorio se han cumplido:
 
@@ -1025,7 +1029,7 @@ sudo bash /opt/scripts/validate_lab03.sh
 
 ---
 
-## 8. Solución de Problemas
+## Solución de Problemas
 
 ### Problema 1: El sistema no arranca después de reparticionar — "No bootable device"
 
@@ -1108,7 +1112,7 @@ El sistema entra en modo emergencia (emergency mode).
 
 ---
 
-## 9. Limpieza
+## Limpieza
 
 Este laboratorio **no requiere limpieza** ya que srv-linux-02 será utilizada en laboratorios posteriores (Lab 04 y Lab 06). La VM debe permanecer configurada y funcional.
 
@@ -1129,7 +1133,7 @@ VBoxManage unregistervm "srv-linux-02" --delete
 
 ---
 
-## 10. Resumen
+## Resumen
 
 ### Logros alcanzados
 
