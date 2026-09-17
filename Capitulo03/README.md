@@ -87,9 +87,12 @@ Con el administrador de Hiper-V de Windows Server, verificar que esten creado lo
 
 **Instrucciones:**
 
-1. Inicia la VM **`srv-linux-02` desde HyperV-Manager**:
+1. Eligiendo la VM **`srv-linux-02` desde HyperV-Manager**:
    ```bash
-   Elegir la máquina indicada con le boton del mouse derecho y dar "connect" y después "start" para iniciarla.
+
+   Usando en la VM con elbotón del mouse del lado derecho, ir a "settings->firmware", cambiar el orden de arranque en dispositivos eligiendo el DVD.
+   Dar clic en los botones "Apply" y "OK".
+   Elegir la máquina `srv-linux-02` con le boton del mouse derecho y dar "connect" y después "start" para iniciarla.
    ```
 
 2. En el menú GRUB del instalador, selecciona **"Try or Install Ubuntu Server"**.
