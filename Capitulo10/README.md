@@ -10,7 +10,7 @@
 
 ## Descripción General
 
-Este laboratorio final integra la configuración de servicios de infraestructura esenciales en un entorno Linux: sincronización horaria (Chrony/NTP), gestión centralizada de registros (rsyslog/journald con logrotate). Se validará la integración completa ejecutando los scripts de automatización del Lab 07 y verificando que los logs se centralizan, las alertas por correo se envían y los reportes de impresión se generan correctamente.
+Este laboratorio final integra la configuración de servicios de infraestructura esenciales en un entorno Linux: sincronización horaria (Chrony/NTP), gestión centralizada de registros (rsyslog/journald con logrotate).
 
 ## Objetivos de Aprendizaje
 
