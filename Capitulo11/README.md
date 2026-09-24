@@ -72,11 +72,11 @@ En este laboratorio configurarás manualmente interfaces de red con Netplan en d
 
 ---
 
-## Paso 1 — Preparación del Entorno y Configuración de VirtualBox
+## Paso 1 — Preparación del Entorno y Configuración
 
 ### Objetivo
 
-Crear la red interna en VirtualBox y verificar que ambas VMs tienen el adaptador correcto asignado.
+Crear la red interna y verificar que ambas VMs tienen el adaptador correcto asignado.
 
 ### Instrucciones
 
