@@ -32,10 +32,10 @@ En este laboratorio configurarás manualmente interfaces de red con Netplan en d
 
 ### Acceso requerido
 
-- Dos VMs Ubuntu 22.04.4 LTS instaladas y operativas en VirtualBox 7.0.14
+- Dos VMs Ubuntu 22.04.4 LTS instaladas y operativas
 - Usuario `labuser` con privilegios `sudo` en ambas VMs
-- Adaptador de red interna configurado en VirtualBox (nombre: `labnet`)
-- Acceso a consola de cada VM (ventana VirtualBox o SSH desde host si ya está configurado)
+- Adaptador de red interna configurado (nombre: `labnet`)
+- Acceso a consola de cada VM (ventana o SSH desde host si ya está configurado)
 
 ## Entorno de Laboratorio
 
@@ -82,36 +82,13 @@ Crear la red interna en VirtualBox y verificar que ambas VMs tienen el adaptador
 
 1. Apaga ambas VMs si están encendidas:
 
-```bash
-# Desde el host (PowerShell/Terminal)
-VBoxManage controlvm srv-linux poweroff 2>/dev/null
-VBoxManage controlvm cli-linux poweroff 2>/dev/null
-```
-
 2. Configura el adaptador 1 de **srv-linux** como red interna `labnet`:
-
-```bash
-VBoxManage modifyvm srv-linux --nic1 intnet --intnet1 labnet
-```
 
 3. Configura el adaptador 1 de **cli-linux** como red interna `labnet`:
 
-```bash
-VBoxManage modifyvm cli-linux --nic1 intnet --intnet1 labnet
-```
-
 4. (Opcional) Añade un adaptador 2 NAT a **srv-linux** para acceso a internet:
 
-```bash
-VBoxManage modifyvm srv-linux --nic2 nat
-```
-
 5. Inicia ambas VMs:
-
-```bash
-VBoxManage startvm srv-linux --type headless
-VBoxManage startvm cli-linux --type headless
-```
 
 6. Accede a la consola de cada VM e inicia sesión como `labuser`.
 
