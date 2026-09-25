@@ -153,6 +153,7 @@ sudo systemctl enable chrony
 7. Configurar el firewall para permitir consultas NTP desde la red interna:
 
 ```bash
+sudo ufw enable
 sudo ufw allow from 192.168.100.0/24 to any port 123 proto udp comment "NTP para red interna"
 sudo ufw reload
 ```
